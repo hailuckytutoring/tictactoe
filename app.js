@@ -1,4 +1,5 @@
 let turn = 0;
+let currentTurn = 1;
 const pieces = ['O', 'X'];
 const board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
 
@@ -61,7 +62,13 @@ function placePiece(e) {
       displayWinner();
     }
 
+    // Check for draw
+    if (winner === '' && currentTurn >= 9) {
+      document.querySelector('.winner').innerHTML = `<h2>It's a draw</h2>`;
+    }
+
     // Next turn
+    currentTurn++;
     turn++;
     if (turn > 1) {
       turn = 0;
